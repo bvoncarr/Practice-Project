@@ -1,8 +1,8 @@
 name: Issue Handle
 on: issues
 jobs:
-  build:
+  output-info:
     runs-on: macos-latest
     steps:
       - name: Output event details
-        run: echo "${{ toJson(github.event}}"
+        run: echo "${{toJson(github.event)}}"
