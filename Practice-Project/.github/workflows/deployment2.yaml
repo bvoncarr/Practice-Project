@@ -1,0 +1,41 @@
+name: Deployment Exercise 2
+on: push
+jobs:
+  lint:
+     runs-on: macos-latest
+     steps:
+     - name: Get code
+       uses: actions/checkout@v3
+     - name: Install dependencies
+       run: npm install
+     - name: Lint
+       run: npm run lint
+  test:
+    runs-on: macos-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: npm install
+      - name: Test Code
+        run: npm test
+  deploy:
+    runs-on: macos-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Install NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - name: Install dependencies
+        run: npm install
+      - name: Lint
+        run: npm run lint
+      - name: Test Code
+        run: npm test
+      - name: Build Code
+        run: npm run build
+      - name: Deploy
+        run: echo "Deploying ..."
+
